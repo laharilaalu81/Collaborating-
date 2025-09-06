@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+            background-color: #f4f4f4;
+        }
+        .converter-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            margin: auto;
+        }
+        label, input {
+            display: block;
+            margin-bottom: 10px;
+        }
+        input[type="number"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="converter-container">
+        <h1>Temperature Converter</h1>
+
+        <label for="celsiusInput">Celsius:</label>
+        <input type="number" id="celsiusInput" placeholder="Enter Celsius" oninput="convertTemperature()">
+
+        <label for="fahrenheitInput">Fahrenheit:</label>
+        <input type="number" id="fahrenheitInput" placeholder="Fahrenheit will appear here" readonly>
+    </div>
+
+    <script>
+        function convertTemperature() {
+            const celsiusInput = document.getElementById('celsiusInput');
+            const fahrenheitInput = document.getElementById('fahrenheitInput');
+
+            // Get the value from the Celsius input
+            const celsiusValue = parseFloat(celsiusInput.value);
+
+            // Check if the input is a valid number
+            if (!isNaN(celsiusValue)) {
+                // Convert Celsius to Fahrenheit
+                const fahrenheitValue = (celsiusValue * 9/5) + 32;
+                fahrenheitInput.value = fahrenheitValue.toFixed(2); // Display with 2 decimal places
+            } else {
+                fahrenheitInput.value = ''; // Clear Fahrenheit field if input is not a number
+            }
+        }
+    </script>
+</body>
+</html>
